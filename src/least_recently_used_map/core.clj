@@ -47,7 +47,7 @@
     (concat (for [[k vm] priority-map]
               (MapEntry. k (:data vm)))
             (when removal-state
-             (list (MapEntry. :state removal-state)))))
+             (list (MapEntry. :lru-state removal-state)))))
 
   ;; Maybe `without` should call `removal-fn`, but that seems more for
   ;; when an element is removed because it's too old.
@@ -99,6 +99,6 @@
   (def m (apply lru-map-with 4 conj [] (range 20)))
   (def m (apply lru-map 4 (range 20)))
   (str m)
-  (dissoc (into {} m) :state)
+  (dissoc (into {} m) :lru-state)
   (vals m)
  )
