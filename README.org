@@ -10,6 +10,8 @@
   =lru-map-with=.  The first produces a map which simply discards
   elements as they are kicked out.  The second runs a function of two
   arguments on a kicked-out element and a state variable.
+  
+** Example
 
 =(apply lru-map 4 (range 20))=
 
