@@ -1,0 +1,24 @@
+
+* Least Recently Used Map
+
+  This package implements a hash-map with a memory constraint.  When
+  an element is added to the hash-map that would cause it to exceed
+  the memory constraint, the element which was used least recently is
+  kicked out of the data structure.
+
+  There are two functions that are important here: =lru-map= and
+  =lru-map-with=.  The first produces a map which simply discards
+  elements as they are kicked out.  The second runs a function of two
+  arguments on a kicked-out element and a state variable.
+
+#+begin_src clojure
+(apply lru-map 4 (range 20))
+;=> {12 13, 14 15, 16 17, 18 19}
+(apply lru-map-with 4 conj [] (range 20))
+;=> {12 13, 14 15, 16 17, 18 19, :state [[0 1] [2 3] [4 5] [6 7] [8 9] [10 11]]}
+#+end_src  
+  
+* License
+
+  Copyright (C) 2012, Chris Gray.  Distributed under the EPL, with the
+  same terms as Clojure.
