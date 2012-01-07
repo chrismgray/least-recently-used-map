@@ -1,6 +1,5 @@
 (ns least-recently-used-map.core
-  (:require [clojure.data.priority-map :as p-map]
-            [clj-time.core :as time])
+  (:require [clojure.data.priority-map :as p-map])
   (:import clojure.lang.MapEntry))
 
 (declare lrumap-empty)
