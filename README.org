@@ -21,6 +21,11 @@
 
 =;> {12 13, 14 15, 16 17, 18 19, :state [[0 1] [2 3] [4 5] [6 7] [8 9] [10 11]]}=
   
+** Thanks
+
+   Much of the inspiration and code for this project is drawn from
+   =org.clojure/data.priority-map= by Mark Engelberg.
+   
 * License
 
   Copyright (C) 2012, Chris Gray.  Distributed under the EPL, with the
