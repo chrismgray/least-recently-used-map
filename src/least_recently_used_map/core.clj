@@ -4,6 +4,9 @@
 
 (declare lrumap-empty)
 
+(defprotocol ILRUUpdater
+  (update-last-used [this key]))
+
 (deftype PersistentLRUMap [priority-map max-size removal-fn removal-state index _meta]
   Object
   (toString [this] (str (doall (.seq this))))
@@ -70,7 +73,14 @@
   clojure.lang.IObj
   (meta [this] _meta)
   (withMeta [this m]
-    (PersistentLRUMap. priority-map max-size removal-fn removal-state index m)))
+    (PersistentLRUMap. priority-map max-size removal-fn removal-state index m))
+
+  ILRUUpdater
+  (update-last-used [this key]
+    (if (not (identical? this (get priority-map key this)))
+      (PersistentLRUMap. (assoc-in priority-map [key :time] index)
+                         max-size removal-fn removal-state (inc index) _meta)
+      this)))
 
 (defn- lru-comparator
   ([a] 0)
