@@ -11,12 +11,12 @@
   elements as they are kicked out.  The second runs a function of two
   arguments on a kicked-out element and a state variable.
 
-#+begin_example
+#+begin_verbatim
 (apply lru-map 4 (range 20))
 ;=> {12 13, 14 15, 16 17, 18 19}
 (apply lru-map-with 4 conj [] (range 20))
 ;=> {12 13, 14 15, 16 17, 18 19, :state [[0 1] [2 3] [4 5] [6 7] [8 9] [10 11]]}
-#+end_example
+#+end_verbatim
   
 * License
 
